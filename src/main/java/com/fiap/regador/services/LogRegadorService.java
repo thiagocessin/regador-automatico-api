@@ -12,9 +12,12 @@ import com.fiap.regador.repository.LogRegadorRepository;
 public class LogRegadorService {
 
 	@Autowired
-	private LogRegadorRepository repo;
+	private LogRegadorRepository logRegadorRepo;
+	
 
 	public List<LogRegador> findAll() {
-		return repo.findAll();
+		return logRegadorRepo.findAll();
 	}
+	
+	
 }

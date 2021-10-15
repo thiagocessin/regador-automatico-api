@@ -16,16 +16,14 @@ import com.fiap.regador.services.LogRegadorService;
 public class LogRegadorResource {
 
 	@Autowired
-	private LogRegadorService service;
+	private LogRegadorService logRegadorService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<LogRegador>> findAll() {
 
-		List<LogRegador> list = service.findAll();
+		List<LogRegador> list = logRegadorService.findAll();
 
 		return ResponseEntity.ok(list);
 	}
-	
-	
 
 }
