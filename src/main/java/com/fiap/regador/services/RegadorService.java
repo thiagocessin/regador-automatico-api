@@ -48,7 +48,7 @@ public class RegadorService {
 	}
 	
 	public Regador fromDTO(RegadorDTO dto) {
-		return new Regador(dto.getContador(), dto.getPlanta());
+		return new Regador(dto.getDeviceUUID(), dto.getContador(), dto.getPlanta());
 		
 	}
 }

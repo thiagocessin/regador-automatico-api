@@ -2,7 +2,6 @@ package com.fiap.regador.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +13,8 @@ public class LogRegador implements Serializable {
 
 	@Id
 	private String id;
+
+	private String deviceUUID;
 
 	private String info;
 
@@ -30,6 +31,14 @@ public class LogRegador implements Serializable {
 		this.info = info;
 		this.porcentagem = porcentagem;
 		this.horario = horario;
+	}
+
+	public String getDeviceUUID() {
+		return deviceUUID;
+	}
+
+	public void setDeviceUUID(String deviceUUID) {
+		this.deviceUUID = deviceUUID;
 	}
 
 	public String getId() {

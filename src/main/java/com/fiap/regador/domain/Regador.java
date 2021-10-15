@@ -13,14 +13,25 @@ public class Regador implements Serializable {
 	@Id
 	private String id;
 
+	private String deviceUUID;
+
 	private Integer contador;
 
 	private Planta planta;
 
-	public Regador(Integer contador, Planta planta) {
+	public Regador(String deviceUUID, Integer contador, Planta planta) {
 		super();
+		this.deviceUUID = deviceUUID;
 		this.contador = contador;
 		this.planta = planta;
+	}
+
+	public String getDeviceUUID() {
+		return deviceUUID;
+	}
+
+	public void setDeviceUUID(String deviceUUID) {
+		this.deviceUUID = deviceUUID;
 	}
 
 	public Integer getContador() {
@@ -46,7 +57,5 @@ public class Regador implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
 
 }
