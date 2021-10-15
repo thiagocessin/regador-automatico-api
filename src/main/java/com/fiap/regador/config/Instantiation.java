@@ -33,9 +33,9 @@ public class Instantiation implements CommandLineRunner {
 
 		//infoRepository.deleteAll();
 
-		LogRegador info = new LogRegador("Regando planta 1", new BigDecimal(30),new Date());
+		//LogRegador info = new LogRegador("Regando planta 1", new BigDecimal(30),12234345.00);
 
-		infoRepository.saveAll(Arrays.asList(info));
+		//infoRepository.saveAll(Arrays.asList(info));
 
 		
 

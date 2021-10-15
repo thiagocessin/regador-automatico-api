@@ -19,13 +19,13 @@ public class LogRegador implements Serializable {
 
 	private BigDecimal porcentagem;
 
-	private Date horario;
+	private String horario;
 
 	public LogRegador() {
 
 	}
 
-	public LogRegador(String info, BigDecimal porcentagem, Date horario) {
+	public LogRegador(String info, BigDecimal porcentagem, String horario) {
 		super();
 		this.info = info;
 		this.porcentagem = porcentagem;
@@ -56,11 +56,11 @@ public class LogRegador implements Serializable {
 		this.porcentagem = porcentagem;
 	}
 
-	public Date getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Date horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 
