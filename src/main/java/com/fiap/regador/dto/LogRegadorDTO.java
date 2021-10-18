@@ -1,18 +1,12 @@
-package com.fiap.regador.domain;
+package com.fiap.regador.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
-public class LogRegador implements Serializable {
-
+public class LogRegadorDTO implements Serializable{
+	
+	
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	private String id;
 
 	private String deviceUUID;
 
@@ -21,17 +15,16 @@ public class LogRegador implements Serializable {
 	private BigDecimal porcentagem;
 
 	private String horario;
-
-	public LogRegador() {
-
+	
+	public LogRegadorDTO() {
 	}
 
-	public LogRegador(String info, BigDecimal porcentagem, String horario, String deviceUUID) {
+	public LogRegadorDTO(String deviceUUID, String info, BigDecimal porcentagem, String horario) {
 		super();
+		this.deviceUUID = deviceUUID;
 		this.info = info;
 		this.porcentagem = porcentagem;
 		this.horario = horario;
-		this.deviceUUID = deviceUUID;
 	}
 
 	public String getDeviceUUID() {
@@ -40,14 +33,6 @@ public class LogRegador implements Serializable {
 
 	public void setDeviceUUID(String deviceUUID) {
 		this.deviceUUID = deviceUUID;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getInfo() {
@@ -73,5 +58,8 @@ public class LogRegador implements Serializable {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
+	
+	
+	
 
 }
