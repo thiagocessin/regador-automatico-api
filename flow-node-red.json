@@ -1,0 +1,286 @@
+[
+    {
+        "id": "b6a6ea320cf9a0da",
+        "type": "tab",
+        "label": "Regador Automático",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "27bc947de3032cb1",
+        "type": "serial in",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "serial": "0ac126ca4532672f",
+        "x": 70,
+        "y": 280,
+        "wires": [
+            [
+                "32a740764aeab37a"
+            ]
+        ]
+    },
+    {
+        "id": "32a740764aeab37a",
+        "type": "json",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [
+                "96911cc21964f4d3"
+            ]
+        ]
+    },
+    {
+        "id": "b711bc92231456f0",
+        "type": "switch",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "property": "payload.porcentagem",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "40",
+                "vt": "str"
+            },
+            {
+                "t": "lt",
+                "v": "40",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 650,
+        "y": 280,
+        "wires": [
+            [],
+            [
+                "ba5c01eb5afeb526",
+                "38024e6d7947d9d3",
+                "8552c04bb235437a"
+            ]
+        ]
+    },
+    {
+        "id": "38024e6d7947d9d3",
+        "type": "mongodb3 in",
+        "z": "b6a6ea320cf9a0da",
+        "service": "_ext_",
+        "configNode": "08ee339d0e23c295",
+        "name": "",
+        "collection": "logRegador",
+        "operation": "save",
+        "x": 970,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "96911cc21964f4d3",
+        "type": "change",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.horario",
+                "pt": "msg",
+                "to": "$now()",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 280,
+        "wires": [
+            [
+                "b711bc92231456f0"
+            ]
+        ]
+    },
+    {
+        "id": "f472ac64bb1d894a",
+        "type": "mongodb3 in",
+        "z": "b6a6ea320cf9a0da",
+        "service": "_ext_",
+        "configNode": "08ee339d0e23c295",
+        "name": "",
+        "collection": "regador",
+        "operation": "findOne",
+        "x": 550,
+        "y": 440,
+        "wires": [
+            [
+                "aead7df77e69a018"
+            ]
+        ]
+    },
+    {
+        "id": "f5047815b8072207",
+        "type": "template",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"deviceUUID\":\"{{payload.deviceUUID}}\"}",
+        "output": "json",
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "f472ac64bb1d894a"
+            ]
+        ]
+    },
+    {
+        "id": "ba5c01eb5afeb526",
+        "type": "change",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.info",
+                "pt": "msg",
+                "to": "info",
+                "tot": "flow"
+            },
+            {
+                "t": "move",
+                "p": "payload.porcentagem",
+                "pt": "msg",
+                "to": "porcentagem",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 80,
+        "y": 440,
+        "wires": [
+            [
+                "f5047815b8072207"
+            ]
+        ]
+    },
+    {
+        "id": "88f663225100e854",
+        "type": "mongodb3 in",
+        "z": "b6a6ea320cf9a0da",
+        "service": "_ext_",
+        "configNode": "08ee339d0e23c295",
+        "name": "",
+        "collection": "regador",
+        "operation": "save",
+        "x": 1220,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aead7df77e69a018",
+        "type": "change",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.contador",
+                "pt": "msg",
+                "to": "payload.contador+1",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 440,
+        "wires": [
+            [
+                "88f663225100e854",
+                "8aa7a90a8c0712a9"
+            ]
+        ]
+    },
+    {
+        "id": "8aa7a90a8c0712a9",
+        "type": "debug",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "8552c04bb235437a",
+        "type": "debug",
+        "z": "b6a6ea320cf9a0da",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0ac126ca4532672f",
+        "type": "serial-port",
+        "serialport": "COM6",
+        "serialbaud": "57600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "08ee339d0e23c295",
+        "type": "mongodb3",
+        "uri": "mongodb+srv://noderedbrasil:noderedbrasil@cluster0.30ppb.mongodb.net/AulaFiap?retryWrites=true&w=majority",
+        "name": "Aula-Fiap NodeREDBrasil",
+        "options": "",
+        "parallelism": "-1"
+    }
+]
