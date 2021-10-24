@@ -9,19 +9,18 @@ public class LogRegadorDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private String deviceUUID;
-
+	private String regadorID;
 	private String info;
-
 	private BigDecimal porcentagem;
-
 	private String horario;
 	
 	public LogRegadorDTO() {
 	}
 
-	public LogRegadorDTO(String deviceUUID, String info, BigDecimal porcentagem, String horario) {
+	public LogRegadorDTO(String deviceUUID, String regadorID, String info, BigDecimal porcentagem, String horario) {
 		super();
 		this.deviceUUID = deviceUUID;
+		this.regadorID = regadorID;
 		this.info = info;
 		this.porcentagem = porcentagem;
 		this.horario = horario;
@@ -58,8 +57,12 @@ public class LogRegadorDTO implements Serializable{
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	
-	
-	
 
+	public String getRegadorID() {
+		return regadorID;
+	}
+
+	public void setRegadorID(String regadorID) {
+		this.regadorID = regadorID;
+	}
 }

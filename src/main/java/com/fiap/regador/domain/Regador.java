@@ -12,11 +12,8 @@ public class Regador implements Serializable {
 
 	@Id
 	private String id;
-
 	private String deviceUUID;
-
 	private Integer contador;
-
 	private Planta planta;
 
 	public Regador(String deviceUUID, Integer contador, Planta planta) {

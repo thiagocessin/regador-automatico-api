@@ -15,23 +15,22 @@ public class LogRegador implements Serializable {
 	private String id;
 
 	private String deviceUUID;
-
+	private String regadorID;
 	private String info;
-
 	private BigDecimal porcentagem;
-
 	private String horario;
 
 	public LogRegador() {
 
 	}
 
-	public LogRegador(String info, BigDecimal porcentagem, String horario, String deviceUUID) {
+	public LogRegador(String info, BigDecimal porcentagem, String horario, String deviceUUID, String regadorID) {
 		super();
 		this.info = info;
 		this.porcentagem = porcentagem;
 		this.horario = horario;
 		this.deviceUUID = deviceUUID;
+		this.regadorID = regadorID;
 	}
 
 	public String getDeviceUUID() {
@@ -74,4 +73,11 @@ public class LogRegador implements Serializable {
 		this.horario = horario;
 	}
 
+	public String getRegadorID() {
+		return regadorID;
+	}
+
+	public void setRegadorID(String regadorID) {
+		this.regadorID = regadorID;
+	}
 }
